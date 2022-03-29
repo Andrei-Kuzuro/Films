@@ -1,0 +1,40 @@
+.containerFilmCard {
+  margin: 10px;
+}
+
+.filmCard {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid #c3c1c1;
+  box-shadow: 0px 0px 84px 0px #c3c1c1;
+  background: #d4dde1;
+  width: 200px;
+}
+
+.filmCardImage {
+}
+
+.filmCardImage img {
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.filmCardTitle {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.filmCardRating {
+  position: absolute;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  background: rgba(38, 37, 37, 0.64);
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  right: 10px;
+  top: 10px;
+  border: 4px solid rgb(134, 49, 239);
+  border-radius: 50%;
+}

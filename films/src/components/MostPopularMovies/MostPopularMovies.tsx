@@ -1,28 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/store";
-import { IMovieCard, Title } from "../Title";
 import { useEffect } from "react";
-import { fetchMovie } from "../../redux/actions/movieAction";
+import { fetchMostPopularMovies } from "../../redux/actions/movieAction";
+import { FilmCard, IMovieCard } from "../FilmCard/FilmCard";
+import { NavBar } from "../NavBar/NavBar";
 
-export const List = () => {
-  const movies = useSelector((state: IState) => state.movieReduser.movies);
+export const MostPopularMovies = () => {
+  const movies = useSelector((state: IState) => state.movieReducer.movies);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMovie());
+    dispatch(fetchMostPopularMovies());
   }, []);
 
   return (
     <div>
+      <NavBar />
       {movies.map((item: IMovieCard) => {
         return (
-          <Title
+          <FilmCard
             key={item.id}
-            title={item.title}
             fullTitle={item.fullTitle}
-            year={item.year}
             image={item.image}
-            crew={item.crew}
             imDbRating={item.imDbRating}
           />
         );

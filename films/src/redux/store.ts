@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import { IMovieState, movieReducer } from "./redusers/movieReducer";
 
 export interface IState {
-  movieReduser: IMovieState;
+  movieReducer: IMovieState;
 }
 
 export const store = createStore(
