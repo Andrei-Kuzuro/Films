@@ -1,20 +1,50 @@
-import { NavLink } from "react-router-dom";
-import { MostPopularTVs } from "../MostPopularTVs/MostPopularTVs";
+import { NavLink, useHistory } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
 export const NavBar = () => {
+  const history = useHistory();
+
   return (
-    <div>
-      <NavLink to="/" exact>
-        Top 250 Movies
+    <div className={styles.container}>
+      <NavLink
+        to="/Top250Movies"
+        exact
+        className={styles.link}
+        onClick={() => {
+          history.push("/Top250Movies");
+        }}
+      >
+        <p className={styles.text}>Top 250 Movies</p>
       </NavLink>
-      <NavLink to="/Top250TVs" exact>
-        Top 250 TVs
+      <NavLink
+        to="/Top250TVs"
+        exact
+        className={styles.link}
+        onClick={() => {
+          history.push("/Top250TVs");
+        }}
+      >
+        <p className={styles.text}> Top 250 TVs</p>
       </NavLink>
-      <NavLink to="/MostPopularMovies" exact>
-        Most Popular Movies
+      <NavLink
+        to="/MostPopularMovies"
+        exact
+        className={styles.link}
+        onClick={() => {
+          history.push("/MostPopularMovies");
+        }}
+      >
+        <p className={styles.text}> Most Popular Movies</p>
       </NavLink>
-      <NavLink to="/MostPopularTVs" component={MostPopularTVs} exact>
-        Most Popular TVs
+      <NavLink
+        to="/MostPopularTVs"
+        exact
+        className={styles.link}
+        onClick={() => {
+          history.push("/MostPopularTVs");
+        }}
+      >
+        <p className={styles.text}> Most Popular TVs</p>
       </NavLink>
     </div>
   );

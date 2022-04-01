@@ -3,8 +3,11 @@ import {
   ACTIONS,
   API_DATA_URL,
   API_KEY,
+  COMING_SOON,
+  IN_THEATRES,
   MOST_POPULAR_MOVIES,
   MOST_POPULAR_TVS,
+  SEARCH,
   TOP_250_MOVIES,
   TOP_250_TVS,
 } from "../constants";
@@ -57,8 +60,41 @@ export function fetchMostPopularTVs() {
 
     const data = await response.json();
 
-    console.log(data);
+    dispatch(addMovie(data.items));
+  };
+}
+
+export function fetchInTheatres() {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(`${API_DATA_URL}${IN_THEATRES}${API_KEY}`);
+
+    const data = await response.json();
+
+    console.log("theatres: ", data);
 
     dispatch(addMovie(data.items));
+  };
+}
+
+export function fetchComingSoon() {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(`${API_DATA_URL}${COMING_SOON}${API_KEY}`);
+
+    const data = await response.json();
+
+    console.log("comingsoon: ", data);
+
+    dispatch(addMovie(data.items));
+  };
+}
+
+export function searchMovie(search: string) {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(
+      `${API_DATA_URL}${SEARCH}${API_KEY}/${search}`
+    );
+    const data = await response.json();
+
+    dispatch(addMovie(data.results));
   };
 }

@@ -1,0 +1,32 @@
+.filmCard {
+  position: relative;
+  margin: 10px 10px 0 0;
+  border-radius: 10px;
+  border: 1px solid #141414;
+  box-shadow: 0px 0px 84px 0px #141414;
+  width: 200px;
+  background: #141414;
+  padding: 0;
+}
+
+img {
+  height: 70%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: auto;
+  cursor: pointer;
+}
+
+.filmCardTitle {
+  color: #e6e6e6;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.filmCardDescription {
+  color: #878787;
+  margin: 0;
+  padding: 0;
+}

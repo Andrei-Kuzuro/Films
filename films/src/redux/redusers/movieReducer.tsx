@@ -7,6 +7,7 @@ export interface IMovieCard {
   image: string;
   crew: string;
   imDbRating: string;
+  releaseState: string;
 }
 
 export interface IMovieState {
