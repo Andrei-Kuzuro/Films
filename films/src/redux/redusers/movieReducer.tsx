@@ -1,6 +1,7 @@
 import { ACTIONS } from "../constants";
 
 export interface IMovieCard {
+  id: string;
   title: string;
   fullTitle: string;
   year: string;
@@ -8,6 +9,14 @@ export interface IMovieCard {
   crew: string;
   imDbRating: string;
   releaseState: string;
+
+  contentRating: string;
+  releaseDate: string;
+  genres: string;
+  runtimeStr: string;
+  plot: string;
+  tagline: string;
+  writers: string;
 }
 
 export interface IMovieState {
@@ -23,6 +32,13 @@ export const movieReducer = (state = defaultState, action: any) => {
     return {
       ...state,
       movies: action.movies,
+    };
+  }
+
+  if (action.type === ACTIONS.CLEAR) {
+    return {
+      ...state,
+      movies: [],
     };
   }
 

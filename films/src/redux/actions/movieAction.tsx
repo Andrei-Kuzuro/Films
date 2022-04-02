@@ -8,6 +8,7 @@ import {
   MOST_POPULAR_MOVIES,
   MOST_POPULAR_TVS,
   SEARCH,
+  TITLE,
   TOP_250_MOVIES,
   TOP_250_TVS,
 } from "../constants";
@@ -20,11 +21,19 @@ export const addMovie = (movies: IMovieState) => {
   };
 };
 
+export const clearContent = () => {
+  return {
+    type: ACTIONS.CLEAR,
+  };
+};
+
 export function fetchTop250Movies() {
   return async (dispatch: Dispatch) => {
     const response = await fetch(`${API_DATA_URL}${TOP_250_MOVIES}${API_KEY}`);
 
     const data = await response.json();
+
+    console.log("top250: ", data);
 
     dispatch(addMovie(data.items));
   };
@@ -96,5 +105,14 @@ export function searchMovie(search: string) {
     const data = await response.json();
 
     dispatch(addMovie(data.results));
+  };
+}
+
+export function fetchDescriptionFilms(id: string) {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(`${API_DATA_URL}${TITLE}${API_KEY}/${id}`);
+    const data = await response.json();
+
+    dispatch(addMovie(data));
   };
 }
