@@ -1,0 +1,6 @@
+.filmCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 100px 15px 15px 15px;
+}

@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  position: fixed;
+  background: #052541;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 15px;
+  align-items: baseline;
+  z-index: 1;
+}
+
+.text {
+  color: #ffffff;
+  font-size: 30px;
+  margin-right: 70px;
+  cursor: pointer;
+}

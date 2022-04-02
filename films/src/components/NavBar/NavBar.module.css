@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+}
+.text {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.text::after {
+  position: absolute;
+  content: "";
+  background: #219ed8;
+  transition: all 0.4s ease;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  transform: translateX(-50%);
+}
+
+.text:hover::after {
+  width: 100%;
+}
+
+.link:not(:last-child) {
+  margin-right: 15px;
+}

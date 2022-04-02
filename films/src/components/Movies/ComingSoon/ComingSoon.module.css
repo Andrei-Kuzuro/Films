@@ -1,0 +1,13 @@
+.title {
+  color: #e6e6e6;
+  margin-top: 30px;
+  margin-left: 40px;
+  padding: 0 15px;
+}
+
+.filmCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 1440px;
+}
