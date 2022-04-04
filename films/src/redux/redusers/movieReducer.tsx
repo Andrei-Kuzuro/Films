@@ -21,10 +21,12 @@ export interface IMovieCard {
 
 export interface IMovieState {
   movies: IMovieCard[];
+  currentMovie: IMovieCard | null;
 }
 
 export const defaultState: IMovieState = {
   movies: [],
+  currentMovie: null,
 };
 
 export const movieReducer = (state = defaultState, action: any) => {
@@ -39,6 +41,13 @@ export const movieReducer = (state = defaultState, action: any) => {
     return {
       ...state,
       movies: [],
+    };
+  }
+
+  if (action.type === ACTIONS.ADD_MOVIE_DETAILS) {
+    return {
+      ...state,
+      currentMovie: action.details,
     };
   }
 

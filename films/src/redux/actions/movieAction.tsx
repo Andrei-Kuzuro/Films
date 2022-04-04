@@ -108,11 +108,18 @@ export function searchMovie(search: string) {
   };
 }
 
+export function addMovieDetails(details: any) {
+  return {
+    type: ACTIONS.ADD_MOVIE_DETAILS,
+    details,
+  };
+}
+
 export function fetchDescriptionFilms(id: string) {
   return async (dispatch: Dispatch) => {
     const response = await fetch(`${API_DATA_URL}${TITLE}${API_KEY}/${id}`);
     const data = await response.json();
 
-    dispatch(addMovie(data));
+    dispatch(addMovieDetails(data));
   };
 }

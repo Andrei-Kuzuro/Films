@@ -9,7 +9,7 @@ import { Preloader } from "../Preloader/Preloader";
 import { Header } from "../../Header/Header";
 
 export const DescriptionFilms = () => {
-  const description = useSelector((state: IState) => state.movieReducer.movies);
+  const movie = useSelector((state: IState) => state.movieReducer.currentMovie);
 
   const dispatch = useDispatch();
   const params: { id: string } = useParams();
@@ -18,28 +18,24 @@ export const DescriptionFilms = () => {
     dispatch(fetchDescriptionFilms(params.id));
   }, []);
 
-  return description ? (
+  return movie ? (
     <>
       <Header />
       <div>
-        {description.map((item: IMovieCard) => {
-          return (
-            <FullMovies
-              key={item.id}
-              id={item.id}
-              image={item.image}
-              fullTitle={item.fullTitle}
-              contentRating={item.contentRating}
-              releaseDate={item.releaseDate}
-              genres={item.genres}
-              runtimeStr={item.runtimeStr}
-              plot={item.plot}
-              imDbRating={item.imDbRating}
-              tagline={item.tagline}
-              writers={item.writers}
-            />
-          );
-        })}
+        <FullMovies
+          key={movie.id}
+          id={movie.id}
+          image={movie.image}
+          fullTitle={movie.fullTitle}
+          contentRating={movie.contentRating}
+          releaseDate={movie.releaseDate}
+          genres={movie.genres}
+          runtimeStr={movie.runtimeStr}
+          plot={movie.plot}
+          imDbRating={movie.imDbRating}
+          tagline={movie.tagline}
+          writers={movie.writers}
+        />
       </div>
     </>
   ) : (
