@@ -1,20 +1,35 @@
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../../redux/store";
 import { useEffect } from "react";
-import { fetchMostPopularMovies } from "../../../redux/actions/movieAction";
-import { FilmCard, IMovieCard } from "../../Cards/FilmCard/FilmCard";
+import {
+  clearContent,
+  fetchMostPopularMovies,
+} from "../../../redux/actions/movieAction";
+import { FilmCard } from "../../Cards/FilmCard/FilmCard";
 import { Header } from "../../../Header/Header";
 import styles from "./MostPopularMovies.module.css";
+import { useHistory } from "react-router-dom";
+import { IMovieCard } from "../../../redux/redusers/movieReducer";
+import { Preloader } from "../../Preloader/Preloader";
 
 export const MostPopularMovies = () => {
   const movies = useSelector((state: IState) => state.movieReducer.movies);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchMostPopularMovies());
+
+    return () => {
+      dispatch(clearContent());
+    };
   }, []);
 
-  return (
+  const fullMovie = (id: string) => {
+    return history.push(`movie/` + id);
+  };
+
+  return movies.length !== 20 ? (
     <>
       <Header />
       <div className={styles.filmCards}>
@@ -22,13 +37,18 @@ export const MostPopularMovies = () => {
           return (
             <FilmCard
               key={item.id}
+              id={item.id}
               fullTitle={item.fullTitle}
               image={item.image}
               imDbRating={item.imDbRating}
+              onClick={() => fullMovie(item.id)}
             />
           );
         })}
       </div>
+      )
     </>
+  ) : (
+    <Preloader />
   );
 };

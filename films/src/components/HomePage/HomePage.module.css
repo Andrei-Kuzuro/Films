@@ -22,7 +22,7 @@
   max-width: 700px;
 }
 
-h1 {
+.search h1 {
   position: absolute;
   top: 50px;
   margin-left: 100px;
@@ -32,9 +32,12 @@ h1 {
 
 .searchMovies {
   display: flex;
+  flex-wrap: wrap;
   width: 1440px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 .containerMovie {
-  margin: 0 auto;
+  width: 1440px;
 }

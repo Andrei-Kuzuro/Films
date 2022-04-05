@@ -8,7 +8,11 @@ import { ChangeEvent, useCallback, useState } from "react";
 import { IState, store } from "../../redux/store";
 import { searchMovie } from "../../redux/actions/movieAction";
 import { useDispatch, useSelector } from "react-redux";
-import { FilmCard, IMovieCard } from "../Cards/FilmCard/FilmCard";
+import { FilmCard } from "../Cards/FilmCard/FilmCard";
+import { IMovieCard } from "../../redux/redusers/movieReducer";
+import { API_KEY, TITLE } from "../../redux/constants";
+import { useHistory } from "react-router-dom";
+import { Preloader } from "../Preloader/Preloader";
 
 function debounce(fun: (text: string) => void, ms: number) {
   let isCooldown = false;
@@ -36,16 +40,21 @@ function debounce(fun: (text: string) => void, ms: number) {
 
 const delayedSearch = debounce(
   (text: string) => store.dispatch(searchMovie(text)),
-  1111
+  500
 );
 
 export const HomePage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const searchMovies = useSelector(
     (state: IState) => state.movieReducer.movies
   );
 
   const [search, setSearch] = useState("");
+
+  const fullMovie = (id: string) => {
+    return history.push(`${TITLE}${API_KEY}/` + id);
+  };
 
   const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -65,6 +74,11 @@ export const HomePage = () => {
     [searchMovies]
   );
 
+  const onClick = () => {
+    dispatch(searchMovie(search));
+    setSearch("");
+  };
+
   return (
     <>
       <Header />
@@ -77,21 +91,26 @@ export const HomePage = () => {
             onKeyDown={onKeyDown}
             value={search}
           />
-          <Button text={"Искать"} onClick={() => {}} />
+          <Button text={"Искать"} onClick={onClick} />
         </div>
       </div>
       <div className={styles.searchMovies}>
-        {search ? (
-          searchMovies.map((item: IMovieCard) => {
-            return (
-              <FilmCard
-                key={item.id}
-                fullTitle={item.fullTitle}
-                image={item.image}
-                imDbRating={item.imDbRating}
-              />
-            );
-          })
+        {search.length !== 0 ? (
+          searchMovies.length !== 5 ? (
+            searchMovies.map((item: IMovieCard) => {
+              return (
+                <FilmCard
+                  key={item.id}
+                  fullTitle={item.fullTitle}
+                  image={item.image}
+                  imDbRating={item.imDbRating}
+                  onClick={() => fullMovie(item.id)}
+                />
+              );
+            })
+          ) : (
+            <Preloader />
+          )
         ) : (
           <div className={styles.containerMovie}>
             <InTheatres />

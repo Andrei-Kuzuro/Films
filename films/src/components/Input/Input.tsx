@@ -3,9 +3,9 @@ import styles from "./Input.module.css";
 
 interface IInput {
   type: string;
-  value?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onKeyDown: KeyboardEventHandler<HTMLInputElement>;
 }
 
 export const Input = ({ type, value, onChange, onKeyDown }: IInput) => {

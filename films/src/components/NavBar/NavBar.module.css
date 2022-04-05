@@ -14,7 +14,7 @@
 .text::after {
   position: absolute;
   content: "";
-  background: #219ed8;
+  background: #5c5470;
   transition: all 0.4s ease;
   top: 100%;
   left: 50%;

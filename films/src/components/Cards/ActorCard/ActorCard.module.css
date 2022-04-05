@@ -1,39 +1,24 @@
-.filmCard {
+.actorCard {
   position: relative;
   margin: 10px 10px 0 0;
   border-radius: 10px;
   box-shadow: 0px 0px 84px 0px #dbd8e3;
+  width: 150px;
   background: #dbd8e3;
-  width: 180px;
 }
 
-.filmCardImage {
-  overflow: hidden;
-}
-
-.filmCardImage img {
+.actorCardImage img {
   width: 100%;
   border-radius: 10px 10px 0 0;
   object-fit: cover;
   cursor: pointer;
 }
 
-.filmCardImage img:hover {
-  transform: scale(1.2);
-  opacity: 50%;
-}
-
-.filmCardTitle {
-  width: 180px;
+.actorCardTitle {
+  width: 140px;
   padding: 5px;
   color: #2a2438;
   margin-bottom: 0;
   margin-top: 5px;
-  font-size: 20px;
-}
-
-.filmCardRelease {
-  padding: 5px;
-  font-size: 14px;
-  color: #2a2438;
+  font-size: 16px;
 }

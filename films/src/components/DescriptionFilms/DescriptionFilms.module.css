@@ -1,0 +1,25 @@
+.containerActors {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.containerActors h3 {
+  color: #ffffff;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.actors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.trailer {
+  max-width: 1440px;
+  margin: 0 auto;
+}

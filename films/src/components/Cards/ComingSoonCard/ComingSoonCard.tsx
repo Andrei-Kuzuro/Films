@@ -6,6 +6,7 @@ export interface IMovieCard {
   fullTitle: string;
   image: string;
   releaseState: string;
+  onClick: () => void;
 }
 
 export const ComingSoonCard = ({
@@ -13,12 +14,15 @@ export const ComingSoonCard = ({
   fullTitle,
   image,
   releaseState,
+  onClick,
 }: IMovieCard) => {
   return (
-    <div className={styles.filmCard}>
-      <Image image={image} />
+    <div className={styles.filmCard} onClick={onClick}>
+      <div className={styles.filmCardImage}>
+        <Image image={image} />
+      </div>
       <h3 className={styles.filmCardTitle}> {fullTitle}</h3>
-      <p>{releaseState}</p>
+      <p className={styles.filmCardRelease}>{releaseState}</p>
     </div>
   );
 };

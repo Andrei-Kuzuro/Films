@@ -9,5 +9,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 1440px;
+  max-width: 1400px;
 }

@@ -30,7 +30,7 @@ export const Error = () => {
               <p className={styles.message__text}>
                 We're sorry, the page you were looking for isn't found here. The
                 link you followed may either be broken or no longer exists.
-                Please try again, or take a look at our.
+                Please try again.
               </p>
             </div>
             <div className={styles.error__nav}>
