@@ -6,11 +6,18 @@ export interface IMovieCard {
   fullTitle: string;
   image: string;
   imDbRating: string;
+  onClick: () => void;
 }
 
-export const FilmCard = ({ id, fullTitle, imDbRating, image }: IMovieCard) => {
+export const FilmCard = ({
+  id,
+  fullTitle,
+  imDbRating,
+  image,
+  onClick,
+}: IMovieCard) => {
   return (
-    <div className={styles.filmCard}>
+    <div className={styles.filmCard} onClick={onClick}>
       <Image image={image} />
       <p className={styles.filmCardTitle}> {fullTitle}</p>
       <div className={styles.filmCardRating}>

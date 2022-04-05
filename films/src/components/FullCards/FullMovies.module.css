@@ -1,0 +1,46 @@
+.container {
+  background: white;
+}
+
+.poster {
+  width: 300px;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.containerDescription {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleDescription {
+}
+
+.genre {
+  display: flex;
+}
+
+.genre p {
+}
+
+.rating {
+}
+
+.descriptionMovie {
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionMovie p {
+}
+
+.writers {
+}
+
+.writers p {
+}

@@ -8,7 +8,10 @@ import { ChangeEvent, useCallback, useState } from "react";
 import { IState, store } from "../../redux/store";
 import { searchMovie } from "../../redux/actions/movieAction";
 import { useDispatch, useSelector } from "react-redux";
-import { FilmCard, IMovieCard } from "../Cards/FilmCard/FilmCard";
+import { FilmCard } from "../Cards/FilmCard/FilmCard";
+import { IMovieCard } from "../../redux/redusers/movieReducer";
+import { API_KEY, TITLE } from "../../redux/constants";
+import { useHistory } from "react-router-dom";
 
 function debounce(fun: (text: string) => void, ms: number) {
   let isCooldown = false;
@@ -36,16 +39,21 @@ function debounce(fun: (text: string) => void, ms: number) {
 
 const delayedSearch = debounce(
   (text: string) => store.dispatch(searchMovie(text)),
-  1111
+  500
 );
 
 export const HomePage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const searchMovies = useSelector(
     (state: IState) => state.movieReducer.movies
   );
 
   const [search, setSearch] = useState("");
+
+  const fullMovie = (id: string) => {
+    return history.push(`${TITLE}${API_KEY}/` + id);
+  };
 
   const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -89,6 +97,7 @@ export const HomePage = () => {
                 fullTitle={item.fullTitle}
                 image={item.image}
                 imDbRating={item.imDbRating}
+                onClick={() => fullMovie(item.id)}
               />
             );
           })
