@@ -95,7 +95,7 @@ export const HomePage = () => {
         </div>
       </div>
       <div className={styles.searchMovies}>
-        {search.length !== 5 ? (
+        {search.length !== 0 ? (
           searchMovies.length !== 5 ? (
             searchMovies.map((item: IMovieCard) => {
               return (

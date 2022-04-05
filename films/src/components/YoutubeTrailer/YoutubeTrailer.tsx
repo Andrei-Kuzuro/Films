@@ -9,9 +9,7 @@ export const YoutubeTrailer = () => {
   const youtubeTrailer = useSelector(
     (state: IState) => state.movieReducer.trailer
   );
-
-  console.log("here: ", youtubeTrailer);
-
+  
   const dispatch = useDispatch();
   const params: { id: string } = useParams();
 
@@ -24,8 +22,6 @@ export const YoutubeTrailer = () => {
       <div className={styles.container}>
         <div className={styles.video_container}>
           <iframe
-            width={500}
-            height={300}
             src={`http://www.youtube.com/embed/${youtubeTrailer}`}
             title="Youtube Video player"
             frameBorder="0"

@@ -14,7 +14,8 @@
 }
 
 .container {
-  padding-top: 20px;
+  padding: 20px 0;
+  box-shadow: 0 0 84px 0 #dbd8e3;
   width: 800px;
   height: 300px;
   margin: 0 auto;
