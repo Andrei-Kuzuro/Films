@@ -25,7 +25,7 @@ export const ComingSoon = () => {
   }, []);
 
   const fullMovie = (id: string) => {
-    return history.push(`${TITLE}${API_KEY}/` + id);
+    return history.push(`/movie/` + id);
   };
 
   return (
