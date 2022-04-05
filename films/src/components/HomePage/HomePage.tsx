@@ -12,6 +12,7 @@ import { FilmCard } from "../Cards/FilmCard/FilmCard";
 import { IMovieCard } from "../../redux/redusers/movieReducer";
 import { API_KEY, TITLE } from "../../redux/constants";
 import { useHistory } from "react-router-dom";
+import { Preloader } from "../Preloader/Preloader";
 
 function debounce(fun: (text: string) => void, ms: number) {
   let isCooldown = false;
@@ -73,6 +74,11 @@ export const HomePage = () => {
     [searchMovies]
   );
 
+  const onClick = () => {
+    dispatch(searchMovie(search));
+    setSearch("");
+  };
+
   return (
     <>
       <Header />
@@ -85,22 +91,26 @@ export const HomePage = () => {
             onKeyDown={onKeyDown}
             value={search}
           />
-          <Button text={"Искать"} onClick={() => {}} />
+          <Button text={"Искать"} onClick={onClick} />
         </div>
       </div>
       <div className={styles.searchMovies}>
-        {search ? (
-          searchMovies.map((item: IMovieCard) => {
-            return (
-              <FilmCard
-                key={item.id}
-                fullTitle={item.fullTitle}
-                image={item.image}
-                imDbRating={item.imDbRating}
-                onClick={() => fullMovie(item.id)}
-              />
-            );
-          })
+        {search.length !== 5 ? (
+          searchMovies.length !== 5 ? (
+            searchMovies.map((item: IMovieCard) => {
+              return (
+                <FilmCard
+                  key={item.id}
+                  fullTitle={item.fullTitle}
+                  image={item.image}
+                  imDbRating={item.imDbRating}
+                  onClick={() => fullMovie(item.id)}
+                />
+              );
+            })
+          ) : (
+            <Preloader />
+          )
         ) : (
           <div className={styles.containerMovie}>
             <InTheatres />

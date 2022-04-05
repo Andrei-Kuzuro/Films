@@ -10,7 +10,6 @@ import { Header } from "../../../Header/Header";
 import styles from "./Top250TVs.module.css";
 import { useHistory } from "react-router-dom";
 import { IMovieCard } from "../../../redux/redusers/movieReducer";
-import { API_KEY, TITLE } from "../../../redux/constants";
 import { Preloader } from "../../Preloader/Preloader";
 
 export const Top250TVs = () => {
@@ -27,10 +26,10 @@ export const Top250TVs = () => {
   }, []);
 
   const fullMovie = (id: string) => {
-    return history.push(`${TITLE}${API_KEY}/` + id);
+    return history.push(`movie/` + id);
   };
 
-  return movies ? (
+  return movies.length !== 20 ? (
     <>
       <Header />
       <div className={styles.filmCards}>
@@ -47,6 +46,7 @@ export const Top250TVs = () => {
           );
         })}
       </div>
+      )
     </>
   ) : (
     <Preloader />

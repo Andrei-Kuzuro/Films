@@ -7,12 +7,14 @@ import {
 } from "../../../redux/actions/movieAction";
 import { InTheatresCard } from "../../Cards/InTheatresCard/InTheatresCard";
 import styles from "./inTheatres.module.css";
-import { API_KEY, TITLE } from "../../../redux/constants";
 import { useHistory } from "react-router-dom";
 import { IMovieCard } from "../../../redux/redusers/movieReducer";
+import { Preloader } from "../../Preloader/Preloader";
 
 export const InTheatres = () => {
-  const theatres = useSelector((state: IState) => state.movieReducer.movies);
+  const inTheatres = useSelector(
+    (state: IState) => state.movieReducer.inTheatres
+  );
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,14 +27,14 @@ export const InTheatres = () => {
   }, []);
 
   const fullMovie = (id: string) => {
-    return history.push(`${TITLE}${API_KEY}/` + id);
+    return history.push(`movie/` + id);
   };
 
-  return (
+  return inTheatres.length !== 0 ? (
     <>
       <h3 className={styles.title}>In Theatres</h3>
       <div className={styles.filmCards}>
-        {theatres.map((item: IMovieCard) => {
+        {inTheatres.map((item: IMovieCard) => {
           return (
             <InTheatresCard
               key={item.id}
@@ -46,5 +48,7 @@ export const InTheatres = () => {
         })}
       </div>
     </>
+  ) : (
+    <Preloader />
   );
 };

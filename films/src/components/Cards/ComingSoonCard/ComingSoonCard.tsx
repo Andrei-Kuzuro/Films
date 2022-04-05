@@ -18,9 +18,11 @@ export const ComingSoonCard = ({
 }: IMovieCard) => {
   return (
     <div className={styles.filmCard} onClick={onClick}>
-      <Image image={image} />
+      <div className={styles.filmCardImage}>
+        <Image image={image} />
+      </div>
       <h3 className={styles.filmCardTitle}> {fullTitle}</h3>
-      <p>{releaseState}</p>
+      <p className={styles.filmCardRelease}>{releaseState}</p>
     </div>
   );
 };

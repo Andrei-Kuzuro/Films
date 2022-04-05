@@ -10,7 +10,6 @@ export interface IMovieCard {
 }
 
 export const FilmCard = ({
-  id,
   fullTitle,
   imDbRating,
   image,
@@ -18,7 +17,9 @@ export const FilmCard = ({
 }: IMovieCard) => {
   return (
     <div className={styles.filmCard} onClick={onClick}>
-      <Image image={image} />
+      <div className={styles.filmCardImage}>
+        <Image image={image} />
+      </div>
       <p className={styles.filmCardTitle}> {fullTitle}</p>
       <div className={styles.filmCardRating}>
         <p>{imDbRating}</p>

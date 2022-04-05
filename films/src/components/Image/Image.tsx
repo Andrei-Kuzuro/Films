@@ -1,5 +1,5 @@
 export interface IImage {
-  image: string;
+  image?: string;
 }
 
 export const Image = ({ image }: IImage) => {

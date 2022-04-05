@@ -8,7 +8,6 @@ import {
 import { FilmCard } from "../../Cards/FilmCard/FilmCard";
 import { Header } from "../../../Header/Header";
 import styles from "./Top250Movies.module.css";
-import { API_KEY, TITLE } from "../../../redux/constants";
 import { useHistory } from "react-router-dom";
 import { IMovieCard } from "../../../redux/redusers/movieReducer";
 import { Preloader } from "../../Preloader/Preloader";
@@ -27,10 +26,10 @@ export const Top250Movies = () => {
   }, []);
 
   const fullMovie = (id: string) => {
-    return history.push(`${TITLE}${API_KEY}/` + id);
+    return history.push(`movie/` + id);
   };
 
-  return movies ? (
+  return movies.length !== 20 ? (
     <>
       <Header />
       <div className={styles.filmCards}>
@@ -47,6 +46,7 @@ export const Top250Movies = () => {
           );
         })}
       </div>
+      )
     </>
   ) : (
     <Preloader />

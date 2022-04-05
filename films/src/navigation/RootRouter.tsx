@@ -16,12 +16,8 @@ export const RootRouter = () => {
         <Route path="/top250tvs" component={Top250TVs} exact />
         <Route path="/mostpopularmovies" component={MostPopularMovies} exact />
         <Route path="/mostpopulartvs" component={MostPopularTVs} exact />
-        <Route
-          path="/Title/k_55mwuuml/:id"
-          component={DescriptionFilms}
-          exact
-        />
-        <Route path="*" component={Error} exact />
+        <Route path="/movie/:id" component={DescriptionFilms} exact />
+        <Route component={Error} exact />
       </Switch>
     </BrowserRouter>
   );

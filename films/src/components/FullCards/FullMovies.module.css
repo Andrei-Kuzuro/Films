@@ -1,16 +1,39 @@
 .container {
-  background: white;
+  /*background: white;*/
+  padding-top: 80px;
+}
+
+.wrapper {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 30px 0;
+  opacity: 80%;
+}
+
+.wrapperTwo {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 0 15px;
 }
 
 .poster {
-  width: 300px;
-  height: 450px;
+  width: 350px;
+}
+
+.poster img {
+  width: 100%;
+  object-fit: contain;
   border-radius: 10px;
 }
 
 .containerDescription {
   display: flex;
   flex-direction: column;
+  max-width: 800px;
+  margin-left: auto;
+  justify-content: center;
 }
 
 .title {
@@ -19,16 +42,45 @@
 }
 
 .titleDescription {
+  font-size: 35px;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .genre {
   display: flex;
+  align-items: baseline;
 }
 
 .genre p {
+  font-size: 21px;
+  color: #ffffff;
 }
 
-.rating {
+.genre p:first-child {
+  border: 2px solid #03a9f4;
+  padding: 2px;
+}
+
+.genre p:not(:last-child):not(:first-child):after {
+  content: "\22C5";
+  margin-left: 3px;
+}
+
+.genre p:not(:last-child) {
+  margin-right: 15px;
+}
+
+.rating div {
+  display: inline-block;
+  font-size: 30px;
+  background: rgba(38, 37, 37, 0.64);
+  font-weight: bold;
+  color: #ffffff;
+  padding: 13px;
+  border: 4px solid rgb(134, 49, 239);
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .descriptionMovie {
@@ -36,10 +88,23 @@
   flex-direction: column;
 }
 
-.descriptionMovie p {
+.descriptionMovie_tag {
+  color: #ffffff;
+}
+
+.descriptionMovie_review {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.descriptionMovie_plot {
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .writers {
+  font-size: 15px;
+  color: #ffffff;
 }
 
 .writers p {

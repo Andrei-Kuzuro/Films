@@ -7,12 +7,14 @@ import {
 } from "../../../redux/actions/movieAction";
 import { ComingSoonCard } from "../../Cards/ComingSoonCard/ComingSoonCard";
 import styles from "./ComingSoon.module.css";
-import { API_KEY, TITLE } from "../../../redux/constants";
 import { useHistory } from "react-router-dom";
 import { IMovieCard } from "../../../redux/redusers/movieReducer";
+import { Preloader } from "../../Preloader/Preloader";
 
 export const ComingSoon = () => {
-  const movies = useSelector((state: IState) => state.movieReducer.movies);
+  const comingSoon = useSelector(
+    (state: IState) => state.movieReducer.comingSoon
+  );
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,14 +27,14 @@ export const ComingSoon = () => {
   }, []);
 
   const fullMovie = (id: string) => {
-    return history.push(`${TITLE}${API_KEY}/` + id);
+    return history.push(`movie/` + id);
   };
 
-  return (
+  return comingSoon.length !== 0 ? (
     <>
       <h3 className={styles.title}>Coming Soon</h3>
       <div className={styles.filmCards}>
-        {movies.map((item: IMovieCard) => {
+        {comingSoon.map((item: IMovieCard) => {
           return (
             <ComingSoonCard
               key={item.id}
@@ -46,5 +48,7 @@ export const ComingSoon = () => {
         })}
       </div>
     </>
+  ) : (
+    <Preloader />
   );
 };

@@ -18,7 +18,9 @@ export const InTheatresCard = ({
 }: IMovieCard) => {
   return (
     <div className={styles.filmCard} onClick={onClick}>
-      <Image image={image} />
+      <div className={styles.filmCardImage}>
+        <Image image={image} />
+      </div>
       <p className={styles.filmCardTitle}> {fullTitle}</p>
       <p className={styles.filmCardDescription}>{releaseState}</p>
     </div>
